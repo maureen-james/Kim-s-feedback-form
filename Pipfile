@@ -4,6 +4,16 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+psycopg2 = "*"
+flask-sqlalchemy = "*"
+flask-login = "*"
+flask-script = "*"
+flask-wtf = "*"
+flask-bootstrap = "*"
+flask-migrate = "*"
+gunicorn = "*"
+flask = "*"
+flask-uploads = "*"
 
 [dev-packages]
 
