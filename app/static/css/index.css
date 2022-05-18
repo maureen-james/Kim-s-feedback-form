@@ -16,6 +16,7 @@
 }
 body{
     color: black;
+    /* background-color: ; */
 }
 .shape:first-child{
     background: linear-gradient(

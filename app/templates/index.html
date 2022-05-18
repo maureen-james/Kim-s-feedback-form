@@ -24,9 +24,9 @@
     </header>
     <body>
         {% block content %}
-        {% block dashboard %}
-        {% include 'dashboard.html'%}
-        {%endblock%}
+    
+      
+        
         <div class="container text-center">
             <h2>Subscribed user feedback</h2>
             <p class="display-6">Our users have an extra dipping to our application.<br>Please &nbsp;<a href="/authenticate/login">sign-up</a>&nbsp;for more features</p>
@@ -38,8 +38,8 @@
                             <p class = "card-text text-center"> {{feedback.context }}</p>
                             <p class = "card-text">Inception Date:&nbsp;{{ feedback.posted.strftime('%Y-%m-%d') }}</p>
                             <a class =" btn btn-sm btn-success" href="{{ url_for('main.comment', feedback_id = feedback.id)}}">Comments:{{feedback.comment.count()}}</a>
-                            <a class =" btn btn-sm btn-primary" href="{{url_for('main.like',id = feedback.id)}}">Upvote:{{feedback.upvote.count()}}</a>
-                            <a class =" btn btn-sm btn-warning" href="{{url_for('main.dislike',id = feedback.id)}}">Downvote:{{feedback.downvote.count()}}</a>
+                            <a class =" btn btn-sm btn-primary" href="{{url_for('main.upvote',id = feedback.id)}}">Upvote:{{feedback.upvote.count()}}</a>
+                            <a class =" btn btn-sm btn-warning" href="{{url_for('main.downvote',id = feedback.id)}}">Downvote:{{feedback.downvote.count()}}</a>
                             <a class =" btn btn-sm btn-danger" href="{{url_for('main.delete',id = feedback.id)}}">Delete</a>
                         </div>
                     </div>
