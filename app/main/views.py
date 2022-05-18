@@ -3,8 +3,13 @@ from flask import render_template,abort,redirect,url_for,request,flash
 from flask_login import login_required
 from ..models import User,Feedback,Comment,Upvote,Downvote
 from .. import db,photos
+<<<<<<< HEAD
 from .forms import UpdateProfile, FeedbackForm, CommentForm
 from ..requests import get_quote
+=======
+# from .forms import UpdateProfile, FeedbackForm, CommentForm
+# from ..requests import get_quote
+>>>>>>> 69891c99972d5694a50e4c8d6c6dee600ce24345
 
 #Application views
 @main.route('/dashboard')
@@ -17,7 +22,11 @@ def dashboard():
     quotes = get_quote()
     feedback = Feedback.query.all()
 
+<<<<<<< HEAD
     return render_template ('index.html',title=title,feedback=feedback,quotes=quotes,user=user)
+=======
+    return render_template ('dashboard.html',title=title,feedback=feedback,quotes=quotes,user=user)
+>>>>>>> 69891c99972d5694a50e4c8d6c6dee600ce24345
 
 @main.route('/')
 def index():
