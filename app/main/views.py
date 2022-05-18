@@ -99,7 +99,7 @@ def new_feedback():
     else:
         all_feedback = Feedback.query.order_by(Feedback.posted)
 
-    return render_template('new_feedback.html',feedback_form = form,feedback=all_feedback)
+    return render_template('new_feedback.html',form = form,feedback=all_feedback)
 
 @main.route('/comment/<int:feedback_id>', methods = ['POST','GET'])
 def comment(feedback_id):

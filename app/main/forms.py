@@ -13,9 +13,9 @@ class UpdateProfile(FlaskForm):
 
 
 class FeedbackForm(FlaskForm):
-    title = StringField('Feedback Title', validators=[DataRequired(), Length(1, 64)])
-    category = StringField('Feedback Category', validators=[DataRequired(), Length(1, 64)])
-    post = TextAreaField('Feedback Content', validators=[DataRequired()])
+    context = StringField('Type of feedback', validators=[DataRequired(), Length(1, 64)])
+    company = StringField('Company/organization in question', validators=[DataRequired(), Length(1, 64)])
+    post = TextAreaField('Feedback ', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 class CommentForm(FlaskForm):

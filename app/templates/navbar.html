@@ -16,7 +16,7 @@
               <ul class="nav navbar-nav navbar-right">
                   {% if current_user.is_authenticated %}
                   <li><a href="{{url_for('main.profile',name=current_user.username)}}" style="color: black;"><span class="glyphicon glyphicon-user"></span>&nbsp;Profile</a></li>
-                  <li><a href="{{url_for('main.new_feedback')}}"><span class="glyphicon glyphicon-envelope">&nbsp;Add feedback</span></a></li>
+                  <li><a href="{{url_for('main.new_feedback')}}"><span class="glyphicon glyphicon-envelope">&nbsp;Add-feedback</span></a></li>
                   <li><a href="{{url_for('auth.logout')}}" style="color: black;">Sign out</a></li>
                   {% else %}
                   <li><a href="{{url_for('auth.login')}}" style="color: black;"><span class="glyphicon glyphicon-log-in">&nbsp;Sign-in</span></a></li>
