@@ -2,6 +2,11 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
+
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+
 <div class="container">
   {{wtf.quick_form(form)}}
 </div>
