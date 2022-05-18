@@ -3,7 +3,7 @@ from flask_script import Manager,Server
 from app import models
 from flask_migrate import Migrate, MigrateCommand
 # Creating app instance
-app = create_app('production')
+app = create_app('development')
 app.config['SECRET_KEY'] = 'asldfkawo'
 
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql+psycopg2://moringa:jay@localhost/blog'
