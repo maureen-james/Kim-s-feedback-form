@@ -1,19 +1,17 @@
 from email.quoprimime import quote
 import urllib.request,json
 import requests 
+# from . import request
+from .models import Quote
 
 # # Getting api key
 # api_key = None
 
 
-def configure_request(app):
-    global api_key,quote
-    api_key = app.config['API_KEY']
 
 
 
-from . import request
-from .models import Quote
+
 
 API = "http://quotes.stormconsultancy.co.uk/random.json"
 

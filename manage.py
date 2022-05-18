@@ -21,7 +21,7 @@ manager.add_command('db',MigrateCommand)
 app = create_app('development')
 app.config['SECRET_KEY'] = 'asldfkawo'
 
-# app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql+psycopg2://moringa:jay@localhost/blog'
+
 manager = Manager(app)
 migrate = Migrate(app,db)
 
