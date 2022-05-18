@@ -1,33 +1,33 @@
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark navbarbg">
-    <a class="navbar-brand" style="color:#5bc0de ;"  href="{{url_for('main.index')}}"><strong>Kim's Feedback Form</strong> </a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item" style="padding-top: 1vw;">
-                  <a class="nav-link"style="color: black;font-weight: 600;" href="{{url_for('main.index')}}">All Feedbacks</a>
-                </li>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"> Kim's Feedback Forms </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
 
-            </ul>
-        <ul class="navbar-nav ml-auto">
-            {% if current_user.is_authenticated %}
-
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" style= 'margin-right:30px ;color:black ; font-weight: 600;padding-top: 3vw; list-style-type: none;' data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-            &nbsp;<strong>{{current_user.username}}</strong> </a>
-           
-              <a class="dropdown-item"style= 'margin-right:30px ;color:black;padding-top: 3vw;font-weight: 600; list-style-type: none;' href="{{url_for('main.profile',name=current_user.username)}}">&nbsp; My account</a>
-              <a class="dropdown-item"style= 'margin-right:30px ;color:black;padding-top: 3vw; font-weight: 600;list-style-type: none;' href="{{url_for('auth.logout')}}">&nbsp; Log out</a>
-
-            </li>
-            {% else %}
-              <li class="nav-item" style="padding-top: 1vw;margin-right: 1vw;font-size:1vw;color: black;font-weight: 600;">
-                  <a  class="nav-link mr-1" href="{{url_for('auth.login')}}">&nbsp; <strong>Sign Up</strong></a>
-              </li>
-              <li class="nav-item"style="padding-top: 1vw; color:black;">
-                  <a  class="nav-link mr-5" href="{{url_for('auth.login')}}" >&nbsp; <strong>Log In</strong></a>
-              </li>
-            {%endif%}
-
-        </ul>
+      {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('main.profile',name=current_user.username)}}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/new_feedback" class="tag"> Add feedback</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('auth.logout')}}">Sign Out</a></li>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('auth.login')}}">Sign in</a></li>
+        </li>
+        {%endif%}
+      </ul>
     </div>
+  </div>
 </nav>
+  
+     
