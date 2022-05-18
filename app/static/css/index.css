@@ -57,3 +57,20 @@ body{
     border: none;
     
 }
+#container{
+    height: 32vw;
+    width: 65vw;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 1vw;
+    backdrop-filter: blur(0.1vw);
+    border: 0.2vw solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 4vw rgba(8,7,16,0.6);
+    padding: 5vw 13vw;
+}
+.form-control input{
+    width: 80%;
+}
