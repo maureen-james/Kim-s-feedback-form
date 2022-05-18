@@ -3,14 +3,17 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 
+#New login changes.
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 class Feedback(db.Model):
     
     __tablename__ = 'feedback'
 
     id = db.Column(db.Integer,primary_key=True)
-    category = db.Column(db.String)
-    context = db.Column(db.String)
+    company = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     likes = db.relationship('Likes',backref='post',lazy='dynamic')
@@ -22,7 +25,7 @@ class Feedback(db.Model):
         db.session.commit()
 
     def _repr_(self):
-        return f'Feedback{self.category}'
+        return f'Feedback{self.company}'
 class User(UserMixin, db.Model):
     
     __tablename__ = 'users'
