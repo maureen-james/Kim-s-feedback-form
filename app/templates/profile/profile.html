@@ -35,7 +35,7 @@
     {% endif %}
 
     {% if user == current_user %}
-    <form  action="{{url_for('main.update_pic',name=user.username)}}" method="post" enctype = "multipart/form-data">
+    <form id="form1" action="{{url_for('main.update_pic',name=user.username)}}" method="post" enctype = "multipart/form-data">
 
       <input type="file"  name="photo" class="form-control" required>
       <input  class="btn" type="submit">

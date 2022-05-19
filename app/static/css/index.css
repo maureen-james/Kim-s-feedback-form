@@ -527,6 +527,7 @@ footer .footer-text p {
  
 form button{
   background-color: #ca0808;
+  
 }
  #card10{
  
@@ -586,7 +587,7 @@ form button{
   padding: 2vw; 
   margin-top: -2vw;
 }
-.form-control{
+.form1 .form-control{
   width: 50vw;
 
 }
