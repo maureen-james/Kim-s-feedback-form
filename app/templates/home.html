@@ -1,0 +1,62 @@
+{% extends 'bootstrap/base.html'%}
+{% import 'macros.html' as macros %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title> Feedback {{ title }}</title>
+        {% else %}
+        <title> Feedback </title>
+        {% endif %}
+        {% block styles%}
+            {{ super() }}
+        <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+        {% endblock %}
+    </head>
+    <header>
+       <!--Navbar-->  
+        {% block navbar %}
+        {% include 'navbar.html' %}
+        {% endblock %}  
+    </header>
+    <body>
+        {% block content %}
+        {% block landing %}
+        {% include 'landing.html'%}
+        {%endblock%}
+        <div class="container text-center">
+            <h2>Subscribed user feedbacks</h2>
+            <p class="display-6">Our users have an extra dipping to our application.<br>Please &nbsp;<a href="/authenticate/login">sign-up</a>&nbsp;for more features</p>
+            {% for feedback in feedbacks %}
+                <div class = "col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class = "card-title">Feedback-type : {{ feedback.category }}</h3>
+                            <p class = "card-text text-center"> {{ feedback.context }}</p>
+                            <p class = "card-text">Inception Date:&nbsp;{{ feedback.posted.strftime('%Y-%m-%d') }}</p>
+                            <a class =" btn btn-sm btn-success" href="{{ url_for('main.comment', feedback_id = feedback.id)}}">Comments:{{feedback.comment.count()}}</a>
+                            <a class =" btn btn-sm btn-primary" href="{{url_for('main.like',id = feedback.id)}}">Upvote:{{feedback.upvote.count()}}</a>
+                            <a class =" btn btn-sm btn-warning" href="{{url_for('main.dislike',id = feedback.id)}}">Downvote:{{feedback.downvote.count()}}</a>
+                            <a class =" btn btn-sm btn-danger" href="{{url_for('main.delete',id = feedback.id)}}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- REQUEST FROM QUOTE API -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Quote</h3>
+                <p class="text-center display-4"><marquee behavior="scroll" direction=""></marquee>Some random quotes to keep you refreshed</p>
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote-reverse">
+                    <p>{{ quotes.quote }}</p>
+                    <footer>{{ quotes.author }}</footer>
+                </blockquote>
+            </div>
+        </div>
+    </body>
+    {%endblock%}
+</html>

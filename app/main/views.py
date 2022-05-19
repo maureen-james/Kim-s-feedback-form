@@ -12,12 +12,21 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
+  
+
+    return render_template ('index.html')
+@main.route('/home')
+def home():
+    '''
+    View root page function that returns the index page and its data
+    '''
     title = 'Feedback'
     user = User.query.all()
     quotes = get_quote()
     feedbacks = Feedback.query.all()
 
-    return render_template ('index.html',title=title,feedbacks=feedbacks,quotes=quotes,user=user)
+    return render_template ('home.html',title=title,feedbacks=feedbacks,quotes=quotes,user=user)
+
 
 @main.route('/user/<name>')
 def profile(name):
