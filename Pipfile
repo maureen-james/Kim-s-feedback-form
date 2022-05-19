@@ -16,6 +16,7 @@ flask = "*"
 flask-uploads = "*"
 email-validator = "*"
 requests = "*"
+flask-form = "*"
 
 [dev-packages]
 
