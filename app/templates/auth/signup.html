@@ -1,23 +1,21 @@
 {% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf%}
-
+<header>
+    <!--Navbar-->  
+     {% block navbar %}
+     {% include 'navbar.html' %}
+     {% endblock %}  
+ </header>
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6">
-            <img src="{{url_for('static', filename='assets/authenticate.png')}}" class="img-responsive img-rounded"/>
-        </div>
-        <div class="col-sm-6">
+<div class="container" >
+    <div class="row" >
+     
+        <div class="col-sm-6"id="container7">
             <h3 class="text-center"><u>Sign-up to experience all features</u></h3>
             {{wtf.quick_form(signup_form)}}        
         </div>
     </div>
-<footer>
-    <!-- FOOTER BLOCK -->
-    {% block footer %}
-    {% include 'footer.html' %}
-    {% endblock %}
-</footer>
+
 
     {% endblock%}
 </div>

@@ -1,5 +1,10 @@
 {% extends 'base.html'%}
-
+<header>
+  <!--Navbar-->  
+   {% block navbar %}
+   {% include 'navbar.html' %}
+   {% endblock %}  
+</header>
 {% block content %}
 <div class="container">
 <div class="row">
@@ -39,10 +44,5 @@
   </div>
 </div>
 </div>
-<footer>
-  <!-- FOOTER BLOCK -->
-  {% block footer %}
-  {% include 'footer.html' %}
-  {% endblock %}
-</footer>
+
 {% endblock %}

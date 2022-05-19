@@ -22,12 +22,9 @@
     </header>
     <body>
         {% block content %}
-        {% block landing %}
-        {% include 'landing.html'%}
-        {%endblock%}
+       
         <div class="container text-center">
-            <h2>Subscribed user feedbacks</h2>
-            <p class="display-6">Our users have an extra dipping to our application.<br>Please &nbsp;<a href="/authenticate/login">sign-up</a>&nbsp;for more features</p>
+            
             {% for feedback in feedbacks %}
                 <div class = "col-md-6">
                     <div class="card">
@@ -53,7 +50,7 @@
             <div class="card-body">
                 <blockquote class="blockquote-reverse">
                     <p>{{ quotes.quote }}</p>
-                    <footer>{{ quotes.author }}</footer>
+                    <p>{{ quotes.author }}</p>
                 </blockquote>
             </div>
         </div>

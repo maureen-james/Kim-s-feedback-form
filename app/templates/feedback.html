@@ -1,7 +1,12 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro %}
 {% import 'bootstrap/wtf.html' as wtf%}
-
+<header>
+    <!--Navbar-->  
+     {% block navbar %}
+     {% include 'navbar.html' %}
+     {% endblock %}  
+ </header>
 {% block content %}
  <body>
   <div  class="container">
@@ -12,12 +17,7 @@
       </div>
   </div>
  </body> 
- <footer>
-    <!-- FOOTER BLOCK -->
-    {% block footer %}
-    {% include 'footer.html' %}
-    {% endblock %}
-</footer>
+
 
 {%endblock%}
 

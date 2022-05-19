@@ -1,14 +1,20 @@
 {% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf%}
 
+<header>
+  <!--Navbar-->  
+   {% block navbar %}
+   {% include 'navbar.html' %}
+   {% endblock %}  
+</header>
 {% block content %}
-<div class="container">
+<div class="container" >
   <div class="container"> 
     <div class="row">
       <div class= "col-md-6">
-        <img src="{{url_for('static', filename='assets/signup.png')}}" class="img-responsive img-rounded"/>
+        <!-- <img src="{{url_for('static', filename='assets/signup.png')}}" class="img-responsive img-rounded"/> -->
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6"id="container" >
       <!--Flash message -->
       {% for message in get_flashed_messages() %}
         <div class="alert alert-danger">
@@ -23,12 +29,7 @@
      </div>
     </div>
 </div>
-<footer class="mt-5">
-  <!-- FOOTER BLOCK -->
-  {% block footer %}
-  {% include 'footer.html' %}
-  {% endblock %}
-</footer>
+
 
 {% endblock%}
 </div>

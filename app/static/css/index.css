@@ -488,3 +488,45 @@ footer .footer-text p {
   border: none;
   color: black;
 }
+#container{
+  height: 32vw;
+  width: 25vw;
+  background-color: rgba(255,255,255,0.13);
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 1vw;
+  backdrop-filter: blur(1vw);
+  border: 0.2vw solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 4vw rgba(8,7,16,0.6);
+  padding: 3vw 3vw;
+}
+#container7{
+  height: 32vw;
+  width: 25vw;
+  background-color: rgba(255,255,255,0.13);
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 1vw;
+  backdrop-filter: blur(1vw);
+  border: 0.2vw solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 4vw rgba(8,7,16,0.6);
+  padding: 3vw 3vw;
+}
+.container{
+  background-image: url("../assets/brand.jpg");
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 92vh;
+  font-weight: 900;
+  
+}
+form button{
+  background-color: #ca0808;
+}
