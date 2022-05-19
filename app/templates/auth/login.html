@@ -8,11 +8,11 @@
    {% endblock %}  
 </header>
 {% block content %}
-<div class="container" >
-  <div class="container"> 
+<div class="container" id="container8">
+  <div class="container" > 
     <div class="row">
-      <div class= "col-md-6">
-        <!-- <img src="{{url_for('static', filename='assets/signup.png')}}" class="img-responsive img-rounded"/> -->
+      <div class= "col-md-6" >
+        <!-- <img style="margin-right: 7vw;" src="{{url_for('static', filename='assets/signup.png')}}" class="img-responsive img-rounded"/> -->
       </div>
       <div class="col-md-6"id="container" >
       <!--Flash message -->
@@ -23,14 +23,14 @@
         </div>
       {% endfor %}
       <!-- Login form -->
-      <h4 class="text-center"><u>Please enter your account credentials</u></h4>
+      <h4 class="text-center">sign up</h4>
       {{wtf.quick_form(login_form)}}
-      <p> Don't have an account? <a href="{{url_for('auth.signup')}}">Sign up here</a></p>
+      <p style="margin-top: 1vw;"> Don't have an account? <a href="{{url_for('auth.signup')}}">Sign up here</a></p>
      </div>
     </div>
 </div>
 
-
-{% endblock%}
 </div>
+{% endblock%}
+
 
