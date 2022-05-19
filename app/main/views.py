@@ -79,13 +79,14 @@ def new_feedback():
         
         db.session.add(new_feedback)
         db.session.commit()
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.home'))
     else:
         all_feedbacks = Feedback.query.order_by(Feedback.posted)
 
     return render_template('feedback.html',feedback_form = form,feedbacks=all_feedbacks)
 
 @main.route('/comment/<int:feedback_id>', methods = ['POST','GET'])
+@login_required
 def comment(feedback_id):
     form = CommentForm()
     feedback = Feedback.query.get(feedback_id)
@@ -111,7 +112,7 @@ def like(id):
     new_like = Upvote(feedback_id=id)
     db.session.add(new_like)
     db.session.commit()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.home'))
 
 
 @main.route('/dislike/<int:id>', methods=['GET', 'POST'])
@@ -130,7 +131,7 @@ def dislike(id):
     db.session.add(new_dislike)
     db.session.commit()
     
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.home'))
 
 @main.route('/delete_feedback/<int:id>',methods = ['GET','POST'])
 @login_required
@@ -139,7 +140,7 @@ def delete(id):
     db.session.delete(feedback)
     db.session.commit()
 
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.home'))
 
 @main.route("/delete_comment/<int:id>")
 @login_required
@@ -148,6 +149,6 @@ def delete_comment(id):
     db.session.delete(comment)
     db.session.commit()
 
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.home'))
 
     
