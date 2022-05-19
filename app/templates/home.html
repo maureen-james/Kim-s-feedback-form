@@ -28,7 +28,7 @@
             {% for feedback in feedbacks %}
                 <div class = "col-md-6">
                     <div  class="card">
-                        <div  id="card" class="card-body">
+                        <div  id="card10" class="card-body">
                             <h3 class = "card-title">Feedback-type : {{ feedback.category }}</h3>
                             <p class = "card-text text-center"> {{ feedback.context }}</p>
                             <p class = "card-text">Inception Date:&nbsp;{{ feedback.posted.strftime('%Y-%m-%d') }}</p>
@@ -42,19 +42,25 @@
             {% endfor %}
         </div>
         <!-- REQUEST FROM QUOTE API -->
-        <div class="card" id="card4" >
-            <div class="card-header">
-                <h3 class="text-center">Quote</h3>
-                <p class="text-center display-4"><marquee behavior="scroll" direction=""></marquee>Some random quotes to keep you refreshed</p>
-            </div>
-            <div class="card-body">
-                <blockquote class="blockquote-reverse">
-                    <p>{{ quotes.quote }}</p>
-                    <p>{{ quotes.author }}</p>
-                </blockquote>
-            </div>
-        </div>
-    </div>
+        <div class="body1">
+        <div class="container"  >
+                <div class="row">
+                <div class="quote">
+                <div class="col-lg-6">
+                    <div class="card">
+                    <div class="card-header text-center" style="color: #d73716;">
+                        <b>Quote of the Day</b>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ quotes.quote }}</p>
+                        <cite>{{ quotes.author }}</cite>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
     </body>
     {%endblock%}
 </html>
