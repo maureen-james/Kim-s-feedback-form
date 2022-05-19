@@ -1,22 +1,14 @@
 {% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf%}
 
-
 {% block content %}
-{% block navbar %}
-{% include 'navbar.html' %}
-{% endblock %}
-<div class="all">
-<div class="background">
-  <div class="shape"></div>
-  <div class="shape"></div>
-</div>
-<div class="container1"> 
- 
+<div class="container">
+  <div class="container"> 
     <div class="row">
-      <div class= "col-md-2"> </div>
-      <div class="col-md-8">
-        <h3>LOG IN</h3>
+      <div class= "col-md-6">
+        <img src="{{url_for('static', filename='assets/signup.png')}}" class="img-responsive img-rounded"/>
+      </div>
+      <div class="col-md-6">
       <!--Flash message -->
       {% for message in get_flashed_messages() %}
         <div class="alert alert-danger">
@@ -25,13 +17,19 @@
         </div>
       {% endfor %}
       <!-- Login form -->
+      <h4 class="text-center"><u>Please enter your account credentials</u></h4>
       {{wtf.quick_form(login_form)}}
-      <p> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a></p>
+      <p> Don't have an account? <a href="{{url_for('auth.signup')}}">Sign up here</a></p>
      </div>
-     <div clas="col-md-2"> </div>
     </div>
-  
 </div>
+<footer class="mt-5">
+  <!-- FOOTER BLOCK -->
+  {% block footer %}
+  {% include 'footer.html' %}
+  {% endblock %}
+</footer>
+
+{% endblock%}
 </div>
 
-{% endblock %}

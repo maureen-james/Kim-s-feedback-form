@@ -1,13 +1,6 @@
 {% extends 'base.html'%}
 
-
-
 {% block content %}
-
-{% block navbar %}
-{% include 'navbar.html' %}
-{% endblock %}
-
 <div class="container">
 <div class="row">
 <!-- displaying  Username-->
@@ -46,8 +39,10 @@
   </div>
 </div>
 </div>
-
-
-
-
+<footer>
+  <!-- FOOTER BLOCK -->
+  {% block footer %}
+  {% include 'footer.html' %}
+  {% endblock %}
+</footer>
 {% endblock %}

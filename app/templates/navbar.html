@@ -1,34 +1,28 @@
-<nav class="navbar navbar-inverse" style="background-color:#c4c4c4 ;"  role="navigation bg-success">
-      <div class="container-fluid">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/" style="color: black;">Kim's Feedback Forms </a>
-          </div>
-          <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                  <li ><a href="/dashboard" style="color: black;"><strong>Home</strong></a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                  {% if current_user.is_authenticated %}
-                  <li><a href="{{url_for('main.profile',name=current_user.username)}}" style="color: black;"><span class="glyphicon glyphicon-user"></span>&nbsp;Profile</a></li>
-                  <li><a href="{{url_for('main.new_feedback')}}"><span class="glyphicon glyphicon-envelope">&nbsp;Add-feedback</span></a></li>
-                  <li><a href="{{url_for('auth.logout')}}" style="color: black;">Sign out</a></li>
-                  {% else %}
-                  <li><a href="{{url_for('auth.login')}}" style="color: black;"><span class="glyphicon glyphicon-log-in">&nbsp;Sign-in</span></a></li>
-                  {%endif%}
-              </ul>
-          </div>
-      </div>
-  </nav>
-      
-         
-        
-
-  
-     
+<nav class="navbar navbar-inverse" role="navigation bg-success">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"> Kim's Feedback </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/"><strong>Home</strong></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li><a href="{{url_for('main.profile',name=current_user.username)}}"><span class="glyphicon glyphicon-user"></span>&nbsp;Profile</a></li>
+                <li><a href="{{url_for('main.new_feedback')}}"><span class="glyphicon glyphicon-envelope">&nbsp;New-Feedback</span></a></li>
+                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                {% else %}
+                <li><a href="{{url_for('auth.login')}}"><span class="glyphicon glyphicon-log-in">&nbsp;Sign-in</span></a></li>
+                {%endif%}
+            </ul>
+        </div>
+    </div>
+</nav>
 
