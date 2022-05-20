@@ -1,23 +1,19 @@
+from multiprocessing import context
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField,TextAreaField
-from wtforms.fields.simple import TextAreaField
-from wtforms.validators import DataRequired, Length, EqualTo
-from ..models import User
-# from wtforms import ValidationError
-
+from wtforms import StringField, TextAreaField, SubmitField
+from wtforms.validators import InputRequired
+# from wtfforms.fields.choices import SelectField
 
 class UpdateProfile(FlaskForm):
-    bio = TextAreaField('Tell us about you.',validators = [DataRequired()])
-   
-    submit = SubmitField('Submit')
-
-
-class FeedbackForm(FlaskForm):
-    title = StringField('Feedback Title', validators=[DataRequired(), Length(1, 64)])
-    category = StringField('Feedback Category', validators=[DataRequired(), Length(1, 64)])
-    post = TextAreaField('Feedback Content', validators=[DataRequired()])
+    bio = TextAreaField("Dear User, please tell us more about you",validators = [InputRequired()])
     submit = SubmitField('Submit')
 
 class CommentForm(FlaskForm):
-    content = TextAreaField('Feedback Content', validators=[DataRequired()])
+    title = StringField('Comment title :)')
+    comment = TextAreaField("Leave a comment here",validators = [InputRequired()])
+    submit = SubmitField('Submit')
+
+class FeedbackForm(FlaskForm):
+    category = StringField('Feedback Category')
+    context = TextAreaField('Enter feedback details',validators = [InputRequired()])
     submit = SubmitField('Submit')

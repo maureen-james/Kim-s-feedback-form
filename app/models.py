@@ -19,8 +19,6 @@ class User(UserMixin,db.Model):
     password_hash = db.Column(db.String(255))
     password_secure = db.Column(db.String(255))
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
-    # feedback = db.relationship('Feedback', backref='user', lazy='dynamic')
-    # comment = db.relationship('Comment', backref='user', lazy='dynamic')
 
     @property
     def password(self):
@@ -38,26 +36,6 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-class Feedback(db.Model):
-    
-    __tablename__ = 'feedback'
-
-    id = db.Column(db.Integer,primary_key=True)
-    company = db.Column(db.String)
-    context = db.Column(db.String)
-    posted = db.Column(db.DateTime,default=datetime.utcnow)
-    upvote = db.relationship('Upvote',backref='post',lazy='dynamic')
-    downvote = db.relationship('Downvote',backref='post',lazy='dynamic')
-    comment = db.relationship('Comment',backref='post',lazy='dynamic')
-    delete = db.relationship('Delete',backref = 'post',lazy='dynamic')
- 
-    def save_feedback(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def _repr_(self):
-        return f'Feedback{self.company}'
-
 class Role(db.Model):
 
     __tablename__ = 'roles'
@@ -70,11 +48,10 @@ class Role(db.Model):
         return f'User {self.name}'
 
 class Upvote(db.Model):
-
     _tablename_ = 'upvotes'
 
     id = db.Column(db.Integer, primary_key=True)
-    feedback_id = db.Column(db.Integer, db.ForeignKey('feedback.id'))
+    feedback_id = db.Column(db.Integer, db.ForeignKey('feedbacks.id'))
 
     def save(self):
         db.session.add(self)
@@ -92,7 +69,7 @@ class Delete(db.Model):
 
     __tablename__ = 'delete'
     id = db.Column(db.Integer,primary_key = True)
-    feedback_id = db.Column(db.Integer,db.ForeignKey('feedback.id'))
+    feedback_id = db.Column(db.Integer,db.ForeignKey('feedbacks.id'))
 
     def save(self):
         db.session.add(self)
@@ -106,13 +83,33 @@ class Delete(db.Model):
     def _repr_(self):
         return f'{self.feedback_id}'
 
+class Feedback(db.Model):
+
+    __tablename__ = 'feedbacks'
+
+    id = db.Column(db.Integer,primary_key=True)
+    category = db.Column(db.String)
+    context = db.Column(db.String)
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    upvote = db.relationship('Upvote',backref='post',lazy='dynamic')
+    downvote = db.relationship('Downvote',backref='post',lazy='dynamic')
+    comment = db.relationship('Comment',backref='post',lazy='dynamic')
+    delete = db.relationship('Delete',backref = 'post',lazy='dynamic')
+ 
+    def save_feedback(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def _repr_(self):
+        return f'Feedback{self.category}'
+
 class Comment(db.Model):
     
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key = True)
     comment = db.Column(db.Text(),nullable = False)
-    feedback_id = db.Column(db.Integer,db.ForeignKey('feedback.id'))
+    feedback_id = db.Column(db.Integer,db.ForeignKey('feedbacks.id'))
 
     def save_comment(self):
         db.session.add(self)
@@ -133,7 +130,7 @@ class Downvote(db.Model):
     _tablename_ = 'downvotes'
 
     id = db.Column(db.Integer, primary_key=True)
-    feedback_id = db.Column(db.Integer, db.ForeignKey('feedback.id'))
+    feedback_id = db.Column(db.Integer, db.ForeignKey('feedbacks.id'))
 
     def save(self):
         db.session.add(self)

@@ -1,47 +1,31 @@
 from . import main
 from flask import render_template,abort,redirect,url_for,request,flash
 from flask_login import login_required
-from ..models import User,Feedback,Comment,Upvote,Downvote,Delete
+from ..models import User,Feedback,Comment,Upvote,Downvote
 from .. import db,photos
-from .forms import UpdateProfile, FeedbackForm, CommentForm
+from .forms import UpdateProfile, FeedbackForm,CommentForm
 from ..requests import get_quote
 
-
-
 #Application views
-@main.route('/dashboard')
-def dashboard():
-    '''
-    View root page function that returns the index page and its data
-    '''
-    title = 'Kim-s-feedback-form'
-    user = User.query.all()
-    quotes = get_quote()
-    feedback = Feedback.query.all()
-
-
-    # return render_template ('index.html',title=title,feedback=feedback,quotes=quotes,user=user)
-
-    return render_template ('dashboard.html',title=title,feedback=feedback,quotes=quotes,user=user)
-
-
 @main.route('/')
 def index():
     '''
     View root page function that returns the index page and its data
     '''
-    
-    title = 'Kim-s-feedback-form'
+  
+
+    return render_template ('index.html')
+@main.route('/home')
+def home():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Feedback'
     user = User.query.all()
     quotes = get_quote()
-    feedback = Feedback.query.all()
+    feedbacks = Feedback.query.all()
 
-
-    return render_template ('index.html',title=title,feedback=feedback,quotes=quotes,user=user)
-
-    
-
-   
+    return render_template ('home.html',title=title,feedbacks=feedbacks,quotes=quotes,user=user)
 
 
 @main.route('/user/<name>')
@@ -89,19 +73,20 @@ def new_feedback():
     form = FeedbackForm()
 
     if form.validate_on_submit():
-        company = form.company.data
+        category = form.category.data
         context = form.context.data
-        new_feedback = Feedback(company=company,context=context)
+        new_feedback = Feedback(category=category,context=context)
         
         db.session.add(new_feedback)
         db.session.commit()
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.home'))
     else:
-        all_feedback = Feedback.query.order_by(Feedback.posted)
+        all_feedbacks = Feedback.query.order_by(Feedback.posted)
 
-    return render_template('new_feedback.html',feedback_form = form,feedback=all_feedback)
+    return render_template('feedback.html',feedback_form = form,feedbacks=all_feedbacks)
 
 @main.route('/comment/<int:feedback_id>', methods = ['POST','GET'])
+@login_required
 def comment(feedback_id):
     form = CommentForm()
     feedback = Feedback.query.get(feedback_id)
@@ -127,7 +112,7 @@ def like(id):
     new_like = Upvote(feedback_id=id)
     db.session.add(new_like)
     db.session.commit()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.home'))
 
 
 @main.route('/dislike/<int:id>', methods=['GET', 'POST'])
@@ -146,7 +131,7 @@ def dislike(id):
     db.session.add(new_dislike)
     db.session.commit()
     
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.home'))
 
 @main.route('/delete_feedback/<int:id>',methods = ['GET','POST'])
 @login_required
@@ -155,7 +140,7 @@ def delete(id):
     db.session.delete(feedback)
     db.session.commit()
 
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.home'))
 
 @main.route("/delete_comment/<int:id>")
 @login_required
@@ -164,4 +149,6 @@ def delete_comment(id):
     db.session.delete(comment)
     db.session.commit()
 
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.home'))
+
+    

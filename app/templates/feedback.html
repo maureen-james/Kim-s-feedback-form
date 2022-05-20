@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro %}
+{% import 'bootstrap/wtf.html' as wtf%}
+<header>
+    <!--Navbar-->  
+     {% block navbar %}
+     {% include 'navbar.html' %}
+     {% endblock %}  
+ </header>
+{% block content %}
+ <body>
+  <div id="card9" class="container">
+      <div class="row">
+          <div style="border: 0.1vw solid grey; border-radius:1vw;margin-top:6vw;margin-left:14vw;padding:5vw;" class = "col-md-8">
+            {{wtf.quick_form(feedback_form)}}
+          </div>
+      </div>
+  </div>
+ </body> 
+
+
+{%endblock%}
+
