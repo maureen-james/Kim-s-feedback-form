@@ -5,12 +5,11 @@ class Config:
     General configuration of parent class
     '''
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
-    # SQLALCHEMY_TRACK_MODIFICATIONS=False
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+    SQLALCHEMY_TRACK_MODIFICATIONS=True
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:jay@localhost/feedy'
-    
-    DEBUG = True
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/feedy'
+
 
 
     #  email configurations
@@ -38,18 +37,17 @@ class ProdConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
     
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 
-# SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 
-
-# DEBUG = True
+DEBUG = True
 
 
 class TestConfig(Config):
     '''
     Test
     '''
-# SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 
 
 
@@ -59,7 +57,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-# SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 
 
 config_options = {
