@@ -10,6 +10,9 @@ class Config:
 
     # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/feedy'
 
+    # DEBUG = True
+
+
 
 
     #  email configurations
