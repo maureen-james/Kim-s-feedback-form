@@ -9,8 +9,8 @@
 + [Copyright and License](#copyright-and-license-information) 
 
 ## Description
-*BlogA* is a personal blogging website where a user can create and share opinions and other users can create and comment on them.<br>
-Also implemented within is a feature that displays rando quotes to inspire users.<br>
+this is a feedback form to give to your clients or add to your website so that they can give you their opinion on your service.<br>
+Continuous feedback from your clients will help you to improve your services and thereby land more clients.<br>
 The following is a live link to the project:
 [Live link](https://kim-feedback.herokuapp.com/)
 ## Installation process
@@ -67,11 +67,11 @@ Then type
 No bugs identified during build.
 ## Contact information
 + Author E-mail ; `maureen.mwangi@student.moringaschool.com`
-+ Phone Number: +254 712345678.
++ Phone Number: +254 711861542.
 ## Collaborators
 + [Ajedidah Mwanzia](https://github.com/AjedidahMwanzia)
 + [Kimberly Olanga](https://github.com/kim-olanga)
 + [Williams Oditi](https://github.com/Williamsoditi)
 ## Copyright and License
-[MIT LICENSE](https://github.com/Williamsoditi/BlogA/community/license/new?branch=main&template=mit)
+[MIT LICENSE](https://github.com/maureen-james/Kim-s-feedback-form/blob/main/LICENSE)
 
